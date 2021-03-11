@@ -1,17 +1,18 @@
 BEGIN;
 
-DROP TABLE IF EXISTS "game", "category";
+DROP TABLE IF EXISTS "game", "run";
 
 CREATE TABLE "game" (
     "id" serial PRIMARY KEY,
     "title" text NOT NULL
 );
 
-CREATE TABLE "category"(
+CREATE TABLE "run"(
     "id" serial PRIMARY KEY,
-    "name" text NOT NULL,
+    "category" text NOT NULL,
     "video" text,
-    "year" date NOT NULL
+    "year" integer NOT NULL,
+    "game_id" integer NOT NULL REFERENCES "game"("id")
 );
 
 COMMIT;

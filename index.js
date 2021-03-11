@@ -4,8 +4,6 @@ const express = require('express');
 const router = require('./app/router');
 const session = require('express-session');
 
-const userMW = require('./app/middlewares/userMW');
-
 const app = express();
 //on utilise la variable d'environnement PORT pour attribuer un port à notre appli express
 //En cas de pépin, on se rabat sur une valeur par défaut
