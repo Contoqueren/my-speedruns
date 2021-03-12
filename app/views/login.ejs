@@ -1,0 +1,21 @@
+<%- include('partials/header') %>
+
+<% if (locals.error) {%>
+<div><%= error %></div>
+<% } %>
+<div>
+    <div>
+        <form action="" method="POST">
+            <div>
+                <input type="pseudo" name="pseudo" placeholder="pseudo">
+                <label for="pseudo">Votre pseudo</label>
+            </div>
+            <div>
+                <input type="password" name="password" placeholder="password">
+                <label for="password">Votre mot de passe</label>
+            </div>
+            <button type="submit">Se connecter</button>
+        </form>
+    </div>
+</div>
+<%- include('partials/footer') %>

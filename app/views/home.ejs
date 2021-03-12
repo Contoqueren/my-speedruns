@@ -1,0 +1,13 @@
+<%- include('partials/header') %>
+
+<h2><%= runsNumber %> runs faites sur <%= gamesNumber %> jeux différents</h2>
+
+<h3>Voici la liste des jeux :</h3>
+
+<ul>
+	<% for (const game of games) { %>
+	<li><a href="/game/<%= game.id %>"><%= game.title %></a></li>
+	<% } %>
+</ul>
+
+<%- include('partials/footer') %>

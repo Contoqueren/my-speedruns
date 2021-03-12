@@ -7,18 +7,21 @@ const runController = {
 
     getAllruns: async (req, res) => {
 
-        const runs = await Run.findAll({
-            include: 'game'
+        const games = await Game.findAll({
+            order: ['title']
         });
 
-        const games = await Game.findAll();
+        const runsNumber = await Run.count();
 
-        res.send({
-            runs,
-            games
-        })
+        const gamesNumber = await Game.count();
 
-    }
+        res.render('home', {
+            games,
+            runsNumber,
+            gamesNumber
+        });
+
+    },
 }
 
 module.exports = runController;
