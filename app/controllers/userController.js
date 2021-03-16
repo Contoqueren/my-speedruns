@@ -1,5 +1,5 @@
 const {
-    Race,
+    Run,
     Game
 } = require('../models');
 
@@ -41,16 +41,18 @@ const userController = {
     },
 
     adminPage: async (req, res) => {
-        const runs = await Race.findAll({
-            include: 'games',
-            order: ['title']
+        const runs = await Run.findAll({
+            include: ['game', 'event']
         });
 
         const games = await Game.findAll();
 
+        const events = await Event.findAll();
+
         res.render('admin', {
             runs,
-            games
+            games,
+            events
         });
     },
 }
