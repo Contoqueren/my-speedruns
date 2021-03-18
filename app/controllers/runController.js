@@ -1,27 +1,10 @@
 const {
     Game,
-    Run
+    Run,
+    Event
 } = require('../models');
 
 const runController = {
-
-    getAllruns: async (req, res) => {
-
-        const games = await Game.findAll({
-            order: ['title']
-        });
-
-        const runsNumber = await Run.count();
-
-        const gamesNumber = await Game.count();
-
-        res.render('home', {
-            games,
-            runsNumber,
-            gamesNumber
-        });
-
-    },
 
     createRun: async (req, res) => {
         try {
@@ -35,7 +18,7 @@ const runController = {
             } = req.body;
 
             // création d'une nouvelle run
-            const newRun = await Race.create({
+            const newRun = await Run.create({
                 category,
                 video,
                 year,
@@ -68,7 +51,34 @@ const runController = {
         } catch (error) {
             console.log('error in admin', error);
         }
-    }
+    },
+
+    runsByYear: async (req, res) => {
+        try {
+            const year = req.params.id;
+
+            const runs = await Run.findAll({
+                where: {
+                    year
+                },
+                include: ['game']
+            });
+
+            const events = await Event.findAll({
+                where: {
+                    start_year: year
+                }
+            })
+
+            res.render('run', {
+                runs,
+                events
+            })
+
+        } catch (error) {
+            console.log('error in admin', error);
+        }
+    },
 }
 
 module.exports = runController;

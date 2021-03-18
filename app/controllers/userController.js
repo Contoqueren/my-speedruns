@@ -1,6 +1,7 @@
 const {
     Run,
-    Game
+    Game,
+    Event
 } = require('../models');
 
 const userController = {

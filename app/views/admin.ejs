@@ -2,6 +2,118 @@
 
 <h2>Page d'admin</h2>
 
-<p>Plus tard on pourras ajouter/modifier/supprimer un jeu et une run</p>
+<p>Plus tard on pourra ajouter/modifier/supprimer un jeu et une run</p>
+
+<h2>Runs</h2>
+
+<h3>Ajouter une run</h3>
+<form action="/admin/addrun" method="POST">
+    <div>
+        <label for="category">Catégorie</label>
+        <input type="text" name="category" placeholder="La catégorie de la run" />
+    </div>
+    <div>
+        <label for="video">Vidéo</label>
+        <input type="text" name="video" placeholder="La vidéo de la run" />
+    </div>
+    <div>
+        <label for="year">Année</label>
+        <input type="number" name="year" placeholder="L'année de la run" />
+    </div>
+    <div>
+        <label for="time">Temps</label>
+        <input type="text" name="time" placeholder="Le temps de la run" />
+    </div>
+    <div>
+        <label for="game_id">Jeu</label>
+        <select name="game_id">
+            <option value="">--Choisis un jeu--</option>
+            <% for (const game of games) { %>
+            <option value="<%= game.id %>"><%= game.title %></option>
+            <% } %>
+        </select>
+    </div>
+    <div>
+        <label for="event_id">Evénement</label>
+        <select name="event_id">
+            <option value="">--Choisis un événement--</option>
+            <% for (const event of events) { %>
+            <option value="<%= event.id %>"><%= event.name %></option>
+            <% } %>
+        </select>
+    </div>
+    <button type="submit">Créer une run</button>
+</form>
+
+<h3>Supprimer une run</h3>
+<form action="/admin/deleterun" method="POST">
+    <div>
+        <select name="id">
+            <option value="">--Choisis une run--</option>
+            <% for (const run of runs) { %>
+            <option value="<%= run.id %>">
+                <%= run.game.title %> - <%= run.category %> - <%= run.time %>
+            </option>
+            <% } %>
+        </select>
+        <button type="submit">Supprimer la run</button>
+    </div>
+</form>
+
+<h2>Runs</h2>
+
+<h3>Ajouter un jeu</h3>
+
+<form action="/admin/addgame" method="POST">
+    <div>
+        <label for="title">Titre</label>
+        <input type="text" name="title" placeholder="Titre du jeu" />
+    </div>
+    <button type="submit">Créer un jeu</button>
+</form>
+
+<h3>Supprimer un jeu</h3>
+
+<form action="/admin/deletegame" method="POST">
+    <div>
+        <select name="id">
+            <option value="">--Choisis un jeu--</option>
+            <% for (const game of games) { %>
+            <option value="<%= game.id %>"><%= game.title %></option>
+            <% } %>
+        </select>
+        <button type="submit">Supprimer le jeu</button>
+    </div>
+</form>
+
+<h2>Events</h2>
+
+<h3>Ajouter un event</h3>
+
+<form action="/admin/addevent" method="POST">
+    <div>
+        <label for="name">Nom</label>
+        <input type="text" name="name" placeholder="Nom de l'event" />
+    </div>
+    <div>
+        <label for="start_year">Année</label>
+        <input type="text" name="start_year" placeholder="Année de l'event" />
+    </div>
+    <button type="submit">Créer un event</button>
+</form>
+
+<h3>Supprimer un event</h3>
+
+<form action="/admin/deleteevent" method="POST">
+    <div>
+        <select name="id">
+            <option value="">--Choisis un event--</option>
+            <% for (const event of events) { %>
+            <option value="<%= event.id %>"><%= event.name %></option>
+            <% } %>
+        </select>
+        <button type="submit">Supprimer l'event</button>
+    </div>
+</form>
 
 <%- include('partials/footer') %>

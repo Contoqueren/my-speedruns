@@ -6,7 +6,8 @@ class Run extends Sequelize.Model {};
 Run.init({
     category: Sequelize.STRING,
     video: Sequelize.STRING,
-    year: Sequelize.INTEGER
+    year: Sequelize.INTEGER,
+    time: Sequelize.TIME
 }, {
     sequelize,
     tableName: "run"

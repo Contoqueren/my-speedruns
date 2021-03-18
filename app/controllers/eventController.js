@@ -43,6 +43,29 @@ const eventController = {
         } catch (error) {
             console.log('error in admin', error);
         }
+    },
+
+    eventById: async (req, res) => {
+        try {
+            const id = req.params.id;
+
+            const theEvent = await Event.findByPk(id);
+
+            const runs = await Run.findAll({
+                where: {
+                    event_id: id
+                },
+                include: 'game'
+            })
+
+            res.render('event', {
+                event: theEvent,
+                runs
+            })
+
+        } catch (error) {
+            console.log('error in admin', error);
+        }
     }
 }
 

@@ -1,0 +1,14 @@
+<%- include('partials/header') %>
+
+<h2><%= game.title %></h2>
+
+<ul>
+    <% for (const run of runs) { %>
+    <li><a href="<%= run.video %>" target="_blank"><%= run.category %> - <%= run.time %> - <%= run.year %> -
+            <%= run.event.name %>
+        </a>
+    </li>
+    <% } %>
+</ul>
+
+<%- include('partials/footer') %>

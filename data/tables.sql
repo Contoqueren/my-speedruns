@@ -25,7 +25,7 @@ CREATE TABLE "run"(
 
 INSERT INTO "game" ("title") VALUES ('League Of Legends');
 
-INSERT INTO "event" ("name","start_year") VALUES ('Personal', '2016');
+INSERT INTO "event" ("name","start_year") VALUES ('Grind personnel', '2016');
 
 INSERT INTO "run" ("category","video","year","time","game_id", "event_id") VALUES ('Basic Tutorial', 'https://youtu.be/bZvCzb4ZqC0', '2016', '00:02:13',1,1);
 
